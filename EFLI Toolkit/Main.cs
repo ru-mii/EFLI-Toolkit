@@ -288,7 +288,7 @@ namespace EFLI_Toolkit
             if (checkBox_WindowAlwaysOnTop.Checked) TopMost = true;
             else TopMost = false;
 
-            Saves.Save("settings", "WindowAlwaysOnTop", TopMost.ToString(CultureInfo.InvariantCulture));
+            Saves.Save("settings", "WindowAlwaysOnTop", TopMost.ToString());
         }
 
         private void button_Hotkeys_Click(object sender, EventArgs e)
