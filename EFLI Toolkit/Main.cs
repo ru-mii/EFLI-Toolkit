@@ -228,7 +228,8 @@ namespace EFLI_Toolkit
         private void button_PillSizeApply_Click(object sender, EventArgs e)
         {
             float toWrite;
-            if (float.TryParse(textBox_PillSize.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out toWrite))
+            string converted = textBox_PillSize.Text.Replace(",", ".");
+            if (float.TryParse(converted, NumberStyles.Float, CultureInfo.InvariantCulture, out toWrite))
             {
                 if (toWrite != 0)
                 {
