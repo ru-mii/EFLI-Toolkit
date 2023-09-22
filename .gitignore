@@ -2,3 +2,19 @@
 *.cache
 .vs/EFLI Toolkit/v16/.suo
 EFLI Toolkit/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+*.exe
+EFLI Toolkit/bin/x64/Debug/EFLI Toolkit.exe.config
+EFLI Toolkit/bin/x64/Debug/EFLI Toolkit.pdb
+EFLI Toolkit/bin/x64/Release/EFLI Toolkit.exe.config
+EFLI Toolkit/obj/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+EFLI Toolkit/obj/x64/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+EFLI Toolkit/obj/x64/Debug/EFLI Toolkit.csproj.FileListAbsolute.txt
+EFLI Toolkit/obj/x64/Debug/EFLI Toolkit.pdb
+EFLI Toolkit/obj/x64/Debug/EFLI_Toolkit.HotkeysPositionManager.resources
+EFLI Toolkit/obj/x64/Debug/EFLI_Toolkit.Main.resources
+EFLI Toolkit/obj/x64/Debug/EFLI_Toolkit.Properties.Resources.resources
+EFLI Toolkit/obj/x64/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+EFLI Toolkit/obj/x64/Release/EFLI Toolkit.csproj.FileListAbsolute.txt
+EFLI Toolkit/obj/x64/Release/EFLI_Toolkit.HotkeysPositionManager.resources
+EFLI Toolkit/obj/x64/Release/EFLI_Toolkit.Main.resources
+EFLI Toolkit/obj/x64/Release/EFLI_Toolkit.Properties.Resources.resources
