@@ -302,6 +302,15 @@ namespace EFLI_Toolkit
                 array, array.Length, out IntPtr nullification);
         }
 
+        public static bool IsProcessRunning(string name)
+        {
+            bool flag = false;
+            foreach (Process process in Process.GetProcesses())
+                if (process.ProcessName == name) flag = true;
+
+            return flag;
+        }
+
         // checks if key is pressed
         public static bool IsKeyPressed(int keyCode)
         {

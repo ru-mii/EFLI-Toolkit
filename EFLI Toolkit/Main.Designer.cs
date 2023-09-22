@@ -53,6 +53,8 @@ namespace EFLI_Toolkit
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.checkBox_WindowAlwaysOnTop = new System.Windows.Forms.CheckBox();
+            this.backgroundWorker_CheckUpdates = new System.ComponentModel.BackgroundWorker();
+            this.label_Version = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // selector
@@ -257,11 +259,26 @@ namespace EFLI_Toolkit
             this.checkBox_WindowAlwaysOnTop.UseVisualStyleBackColor = true;
             this.checkBox_WindowAlwaysOnTop.CheckedChanged += new System.EventHandler(this.checkBox_WindowAlwaysOnTop_CheckedChanged);
             // 
+            // backgroundWorker_CheckUpdates
+            // 
+            this.backgroundWorker_CheckUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_CheckUpdates_DoWork);
+            // 
+            // label_Version
+            // 
+            this.label_Version.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label_Version.Location = new System.Drawing.Point(233, 221);
+            this.label_Version.Name = "label_Version";
+            this.label_Version.Size = new System.Drawing.Size(100, 23);
+            this.label_Version.TabIndex = 28;
+            this.label_Version.Text = "v2";
+            this.label_Version.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 239);
+            this.Controls.Add(this.label_Version);
             this.Controls.Add(this.checkBox_WindowAlwaysOnTop);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
@@ -319,6 +336,8 @@ namespace EFLI_Toolkit
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBox_WindowAlwaysOnTop;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_CheckUpdates;
+        private System.Windows.Forms.Label label_Version;
     }
 }
 

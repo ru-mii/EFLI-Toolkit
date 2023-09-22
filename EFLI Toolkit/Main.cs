@@ -24,6 +24,10 @@ namespace EFLI_Toolkit
             InitializeComponent();
         }
 
+        // build version, adding new line because github adds it to their file
+        // and the version is being compared with one written in github file in repo
+        public static string softwareVersion = "2" + "\n";
+
         public static Process gameProcess = null;
         public static bool formHotkeysOpen = false;
 
@@ -75,9 +79,11 @@ namespace EFLI_Toolkit
                 }
             }
 
+            label_Version.Text = "v" + softwareVersion.ToString();
 
             backgroundWorker_CheckProcess.RunWorkerAsync();
             backgroundWorker.RunWorkerAsync();
+            backgroundWorker_CheckUpdates.RunWorkerAsync();
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -183,42 +189,48 @@ namespace EFLI_Toolkit
         {
             if (checkBox_PillSize.Checked)
             {
-                // patch with default op code
-                IntPtr pillSizeFunctionPointer = mainModule + 0x32FEEC0;
-                byte[] pillSizeDefaultOp = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
-                Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeDefaultOp);
+                if (Toolkit.IsProcessRunning("LavenderIsland-Win64-Shipping"))
+                {
+                    // patch with default op code
+                    IntPtr pillSizeFunctionPointer = mainModule + 0x32FEEC0;
+                    byte[] pillSizeDefaultOp = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
+                    Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeDefaultOp);
 
-                byte[] pillSizeTemp1 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-                byte[] pillSizeTemp2 = BitConverter.GetBytes((ulong)pillSizeAllocated);
-                byte[] pillSizeEntry = Toolkit.MergeByteArrays(pillSizeTemp1, pillSizeTemp2);
+                    byte[] pillSizeTemp1 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
+                    byte[] pillSizeTemp2 = BitConverter.GetBytes((ulong)pillSizeAllocated);
+                    byte[] pillSizeEntry = Toolkit.MergeByteArrays(pillSizeTemp1, pillSizeTemp2);
 
-                byte[] pillSizeTemp3 = { 0x48, 0xBA };
-                byte[] pillSizeTemp4 = BitConverter.GetBytes((ulong)pillSizeAllocated + 0x100);
-                byte[] pillSizeTemp5 = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
-                byte[] pillSizeTemp6 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-                byte[] pillSizeTemp7 = BitConverter.GetBytes((ulong)pillSizeFunctionPointer + 14);
-                byte[] pillSizeExit = Toolkit.MergeByteArrays(pillSizeTemp3, pillSizeTemp4, pillSizeTemp5, pillSizeTemp6, pillSizeTemp7);
+                    byte[] pillSizeTemp3 = { 0x48, 0xBA };
+                    byte[] pillSizeTemp4 = BitConverter.GetBytes((ulong)pillSizeAllocated + 0x100);
+                    byte[] pillSizeTemp5 = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
+                    byte[] pillSizeTemp6 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
+                    byte[] pillSizeTemp7 = BitConverter.GetBytes((ulong)pillSizeFunctionPointer + 14);
+                    byte[] pillSizeExit = Toolkit.MergeByteArrays(pillSizeTemp3, pillSizeTemp4, pillSizeTemp5, pillSizeTemp6, pillSizeTemp7);
 
-                // set default value for resize
-                pillSizePointer = pillSizeAllocated + 0x100;
-                Toolkit.WriteMemory(pillSizePointer, BitConverter.GetBytes(3f));
-                Toolkit.WriteMemory(pillSizePointer + 0x4, BitConverter.GetBytes(3f));
-                Toolkit.WriteMemory(pillSizePointer + 0x8, BitConverter.GetBytes(3f));
-                textBox_PillSize.Text = "3";
+                    // set default value for resize
+                    pillSizePointer = pillSizeAllocated + 0x100;
+                    Toolkit.WriteMemory(pillSizePointer, BitConverter.GetBytes(3f));
+                    Toolkit.WriteMemory(pillSizePointer + 0x4, BitConverter.GetBytes(3f));
+                    Toolkit.WriteMemory(pillSizePointer + 0x8, BitConverter.GetBytes(3f));
+                    textBox_PillSize.Text = "3";
 
-                // write memory
-                Toolkit.WriteMemory(pillSizeAllocated, pillSizeExit);
-                Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeEntry);
+                    // write memory
+                    Toolkit.WriteMemory(pillSizeAllocated, pillSizeExit);
+                    Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeEntry);
+                }
 
                 textBox_PillSize.Enabled = true;
                 button_PillSizeApply.Enabled = true;
             }
             else
             {
-                // patch with default op code
-                IntPtr pillSizeFunctionPointer = mainModule + 0x32FEEC0;
-                byte[] pillSizeDefaultOp = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
-                Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeDefaultOp);
+                if (Toolkit.IsProcessRunning("LavenderIsland-Win64-Shipping"))
+                {
+                    // patch with default op code
+                    IntPtr pillSizeFunctionPointer = mainModule + 0x32FEEC0;
+                    byte[] pillSizeDefaultOp = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
+                    Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeDefaultOp);
+                }
 
                 textBox_PillSize.Enabled = false;
                 button_PillSizeApply.Enabled = false;
@@ -298,5 +310,8 @@ namespace EFLI_Toolkit
             HotkeysPositionManager hotkeysForm = new HotkeysPositionManager();
             hotkeysForm.ShowDialog();
         }
+
+        private void backgroundWorker_CheckUpdates_DoWork(object sender, DoWorkEventArgs e)
+        { Updates.CheckForUpdates(); }
     }
 }

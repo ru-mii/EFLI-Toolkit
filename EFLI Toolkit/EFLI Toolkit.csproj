@@ -89,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Saves.cs" />
     <Compile Include="Toolkit.cs" />
+    <Compile Include="Updates.cs" />
     <EmbeddedResource Include="HotkeysPositionManager.resx">
       <DependentUpon>HotkeysPositionManager.cs</DependentUpon>
     </EmbeddedResource>
