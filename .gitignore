@@ -1,0 +1,4 @@
+
+*.cache
+.vs/EFLI Toolkit/v16/.suo
+EFLI Toolkit/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs

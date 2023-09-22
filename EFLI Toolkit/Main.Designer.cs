@@ -178,6 +178,7 @@ namespace EFLI_Toolkit
             this.textBox_PlayerPositionZ.Name = "textBox_PlayerPositionZ";
             this.textBox_PlayerPositionZ.Size = new System.Drawing.Size(100, 20);
             this.textBox_PlayerPositionZ.TabIndex = 18;
+            this.textBox_PlayerPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_PlayerPositionY
             // 
@@ -185,6 +186,7 @@ namespace EFLI_Toolkit
             this.textBox_PlayerPositionY.Name = "textBox_PlayerPositionY";
             this.textBox_PlayerPositionY.Size = new System.Drawing.Size(100, 20);
             this.textBox_PlayerPositionY.TabIndex = 17;
+            this.textBox_PlayerPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_PlayerPositionX
             // 
@@ -192,6 +194,7 @@ namespace EFLI_Toolkit
             this.textBox_PlayerPositionX.Name = "textBox_PlayerPositionX";
             this.textBox_PlayerPositionX.Size = new System.Drawing.Size(100, 20);
             this.textBox_PlayerPositionX.TabIndex = 16;
+            this.textBox_PlayerPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // backgroundWorker
             // 
