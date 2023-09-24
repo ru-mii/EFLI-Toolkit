@@ -217,6 +217,7 @@ namespace EFLI_Toolkit
             byte[] steal = ReadMemoryBytes(address, stolenLength);
             byte[] movReg = new byte[2];
             if (register == "eax" || register == "rax") movReg = new byte[] { 0x48, 0xA3 };
+            else if (register == "rdi" || register == "edi") movReg = new byte[] { 0x0, 0x0 };
             byte[] temp4 = BitConverter.GetBytes((long)(allocated + 0x100));
 
             byte[] last1 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
@@ -304,11 +305,10 @@ namespace EFLI_Toolkit
 
         public static bool IsProcessRunning(string name)
         {
-            bool flag = false;
             foreach (Process process in Process.GetProcesses())
-                if (process.ProcessName == name) flag = true;
+                if (process.ProcessName == name) return true;
 
-            return flag;
+            return false;
         }
 
         // checks if key is pressed
