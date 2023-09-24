@@ -1,3 +1,3 @@
 # EFLI-Toolkit  
 
-![image](https://github.com/ru-mii/EFLI-Toolkit/assets/118167137/f949b874-af99-4e4e-b267-9ee93eee3b19)
+![image](https://github.com/ru-mii/EFLI-Toolkit/assets/118167137/a40245ca-8e53-4476-b1ea-6f6651999feb)
