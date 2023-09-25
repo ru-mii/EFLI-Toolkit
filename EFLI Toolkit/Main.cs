@@ -26,7 +26,7 @@ namespace EFLI_Toolkit
 
         // build version, adding new line because github adds it to their file
         // and the version is being compared with one written in github file in repo
-        public static string softwareVersion = "3" + "\n";
+        public static string softwareVersion = "4" + "\n";
 
         public static Process gameProcess = null;
         public static bool formHotkeysOpen = false;
