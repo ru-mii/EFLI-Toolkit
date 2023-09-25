@@ -78,7 +78,7 @@ namespace EFLI_Toolkit
 
             // fill out keyboard table
             for (int i = 0; i < keyboardTableReady.Length; i++)
-            keyboardTableReady[i] = 0;
+                keyboardTableReady[i] = 0;
 
             // load hotkeys
             int.TryParse(Saves.Read("settings", "KeyValueSavePlayerPosition"), out hotkey_SavePlayerPosition);
@@ -218,6 +218,9 @@ namespace EFLI_Toolkit
             playerPointer = Toolkit.SaveRegister(mainModule + 0x9AEC57, 15, "eax", true, IntPtr.Zero);
 
             // game music
+            byte[] defaultOp2 = { 0x0F, 0x10, 0x43, 0x28, 0x49, 0x8B, 0x07, 0x0F, 0x11, 0x44, 0x07, 0x08, 0x0F, 0x10, 0x4B, 0x38 };
+            Toolkit.WriteMemory(mainModule + 0x33B17C9, defaultOp);
+
             byte[] temp1 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
             byte[] temp2 = BitConverter.GetBytes((ulong)musicAllocated);
             byte[] temp3 = { 0x90, 0x90 };
@@ -226,11 +229,11 @@ namespace EFLI_Toolkit
             byte[] temp4 = { 0x48, 0x81, 0xFF, 0x88, 0x00, 0x00, 0x00, 0x75, 0x07, 0x48, 0x89, 0x1D, 0xF0, 0x00, 0x00, 0x00 };
             byte[] temp5 = { 0x0F, 0x10, 0x43, 0x28, 0x49, 0x8B, 0x07, 0x0F, 0x11, 0x44, 0x07, 0x08, 0x0F, 0x10, 0x4B, 0x38 };
             byte[] temp6 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-            byte[] temp7 = BitConverter.GetBytes((ulong)mainModule + 0x33B0999);
+            byte[] temp7 = BitConverter.GetBytes((ulong)mainModule + 0x33B17D9);
             byte[] exit = Toolkit.MergeByteArrays(temp4, temp5, temp6, temp7);
 
             Toolkit.WriteMemory(musicAllocated, exit);
-            Toolkit.WriteMemory(mainModule + 0x33B0989, start);
+            Toolkit.WriteMemory(mainModule + 0x33B17C9, start);
             musicPointer = musicAllocated + 0x100;
 
             //
@@ -248,13 +251,13 @@ namespace EFLI_Toolkit
             0xC3, 0x04, 0xC7, 0x03, 0x3A, 0x00, 0x20, 0x00, 0x48, 0x8B, 0x1D, 0x91, 0x00, 0x00, 0x00 };
             byte[] part5 = { 0x41, 0xBB, 0x01, 0x00, 0x00, 0x00, 0x4C, 0x89, 0x7C, 0x24, 0x20, 0x45, 0x8D, 0x6A, 0x01 };
             byte[] part6 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-            byte[] part7 = BitConverter.GetBytes((ulong)mainModule + 0x1B52701);
+            byte[] part7 = BitConverter.GetBytes((ulong)mainModule + 0x1B53541);
             byte[] exit2 = Toolkit.MergeByteArrays(part4, part5, part6, part7);
 
             Toolkit.WriteMemory(miscAllocated, exit2);
-            Toolkit.WriteMemory(mainModule + 0x1B526F2, start2);
+            Toolkit.WriteMemory(mainModule + 0x1B53532, start2);
 
-            // 
+            //
             byte[] part11 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
             byte[] part22 = BitConverter.GetBytes((ulong)timingAllocated);
             byte[] part33 = { 0x90, 0x90 };
@@ -267,11 +270,11 @@ namespace EFLI_Toolkit
             0x48, 0x8B, 0x1D, 0xB9, 0x00, 0x00, 0x00 };
             byte[] part55 = { 0x48, 0x89, 0x74, 0x24, 0x60, 0x41, 0xBA, 0x28, 0x20, 0x00, 0x00, 0x48, 0x89, 0x6C, 0x24, 0x58 };
             byte[] part66 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-            byte[] part77 = BitConverter.GetBytes((ulong)mainModule + 0x1B526ED);
+            byte[] part77 = BitConverter.GetBytes((ulong)mainModule + 0x1B5352D);
             byte[] exit22 = Toolkit.MergeByteArrays(part44, part55, part66, part77);
 
             Toolkit.WriteMemory(timingAllocated, exit22);
-            Toolkit.WriteMemory(mainModule + 0x1B526DD, start22);
+            Toolkit.WriteMemory(mainModule + 0x1B5351D, start22);
 
             //
             byte[] kekw1 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
@@ -281,11 +284,11 @@ namespace EFLI_Toolkit
             byte[] kek1 = { 0x66, 0x0F, 0x7E, 0x05, 0xF8, 0x00, 0x00, 0x00, 0x8B, 0x42, 0x08, 0x48,
                 0x8D, 0x54, 0x24, 0x20, 0xF2, 0x0F, 0x11, 0x44, 0x24, 0x20 };
             byte[] kek2 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-            byte[] kek3 = BitConverter.GetBytes((ulong)mainModule + 0x32FEEE2);
+            byte[] kek3 = BitConverter.GetBytes((ulong)mainModule + 0x32FFD22);
             byte[] kekexit = Toolkit.MergeByteArrays(kek1, kek2, kek3);
 
             Toolkit.WriteMemory(pillSizeStatsAllocated, kekexit);
-            Toolkit.WriteMemory(mainModule + 0x32FEED4, kekstart);
+            Toolkit.WriteMemory(mainModule + 0x32FFD14, kekstart);
 
             pillSizeStatsPointer = pillSizeStatsAllocated + 0x100;
 
@@ -298,12 +301,12 @@ namespace EFLI_Toolkit
             byte[] cam4 = { 0x48, 0x89, 0x3D, 0xF9, 0x00, 0x00, 0x00 };
             byte[] cam5 = { 0x8B, 0x83, 0x98, 0x01, 0x00, 0x00, 0x44, 0x0F, 0x28, 0xBC, 0x24, 0x70, 0x03, 0x00, 0x00 };
             byte[] cam6 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-            byte[] cam7 = BitConverter.GetBytes((ulong)mainModule + 0x33EFE4E);
+            byte[] cam7 = BitConverter.GetBytes((ulong)mainModule + 0x33F0C8E);
             byte[] camexit = Toolkit.MergeByteArrays(cam4, cam5, cam6, cam7);
 
             cameraPointer = cameraAllocated + 0x100;
             Toolkit.WriteMemory(cameraAllocated, camexit);
-            Toolkit.WriteMemory(mainModule + 0x33EFE3F, camstart);
+            Toolkit.WriteMemory(mainModule + 0x33F0C7F, camstart);
 
             #endregion
         }
@@ -324,7 +327,7 @@ namespace EFLI_Toolkit
                 if (Toolkit.IsProcessRunning("LavenderIsland-Win64-Shipping"))
                 {
                     // patch with default op code
-                    IntPtr pillSizeFunctionPointer = mainModule + 0x32FEEC0;
+                    IntPtr pillSizeFunctionPointer = mainModule + 0x32FFD00;
                     byte[] pillSizeDefaultOp = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
                     Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeDefaultOp);
 
@@ -360,14 +363,14 @@ namespace EFLI_Toolkit
                 if (Toolkit.IsProcessRunning("LavenderIsland-Win64-Shipping"))
                 {
                     // patch with default op code
-                    IntPtr pillSizeFunctionPointer = mainModule + 0x32FEEC0;
+                    IntPtr pillSizeFunctionPointer = mainModule + 0x32FFD00;
                     byte[] pillSizeDefaultOp = { 0x48, 0x83, 0xEC, 0x38, 0x48, 0x8B, 0x89, 0x30, 0x01, 0x00, 0x00, 0x48, 0x85, 0xC9 };
                     Toolkit.WriteMemory(pillSizeFunctionPointer, pillSizeDefaultOp);
                 }
 
-                label_Size.Enabled = false;
-                textBox_PillSize.Enabled = false;
-                button_PillSizeApply.Enabled = false;
+                label_Size.Enabled = true;
+                textBox_PillSize.Enabled = true;
+                button_PillSizeApply.Enabled = true;
             }
         }
 
@@ -461,7 +464,7 @@ namespace EFLI_Toolkit
                 byte[] temp6 = { 0x66, 0x0F, 0x6E, 0x00 };
                 byte[] temp7 = { 0x48, 0x83, 0xC4, 0x20 };
                 byte[] temp8 = { 0xFF, 0x25, 0x00, 0x00, 0x00, 0x00 };
-                byte[] temp9 = BitConverter.GetBytes((ulong)mainModule + 0x342E0B2);
+                byte[] temp9 = BitConverter.GetBytes((ulong)mainModule + 0x342EEF2);
 
                 byte[] start = Toolkit.MergeByteArrays(temp1, temp2, temp3);
                 byte[] exit = Toolkit.MergeByteArrays(temp4, temp5, temp6, temp7, temp8, temp9);
@@ -472,7 +475,7 @@ namespace EFLI_Toolkit
                 if (lastSpeed == 0) Toolkit.WriteMemory(shipSpeedPointer, BitConverter.GetBytes(1000f));
 
                 Toolkit.WriteMemory(shipAllocated, exit);
-                Toolkit.WriteMemory(mainModule + 0x342E0A6, start);
+                Toolkit.WriteMemory(mainModule + 0x342EEE6, start);
 
                 label_ShipSpeed.Enabled = true;
                 textBox_ShipSpeed.Enabled = true;
@@ -482,7 +485,7 @@ namespace EFLI_Toolkit
             else
             {
                 byte[] temp1 = { 0xF3, 0x0F, 0x10, 0x83, 0x98, 0x01, 0x00, 0x00, 0x48, 0x83, 0xC4, 0x20 };
-                Toolkit.WriteMemory(mainModule + 0x342E0A6, temp1);
+                Toolkit.WriteMemory(mainModule + 0x342EEE6, temp1);
 
                 label_ShipSpeed.Enabled = false;
                 textBox_ShipSpeed.Enabled = false;
@@ -496,13 +499,13 @@ namespace EFLI_Toolkit
             if (checkBox_InfiniteShipPower.Checked)
             {
                 byte[] nops = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
-                Toolkit.WriteMemory(mainModule + 0xA91EC5, nops);
+                Toolkit.WriteMemory(mainModule + 0xA91EF5, nops);
             }
             else
             {
                 //F3 0F 11 83 D0 05 00 00
                 byte[] nops = { 0xF3, 0x0F, 0x11, 0x83, 0xD0, 0x05, 0x00, 0x00 };
-                Toolkit.WriteMemory(mainModule + 0xA91EC5, nops);
+                Toolkit.WriteMemory(mainModule + 0xA91EF5, nops);
             }
         }
 
